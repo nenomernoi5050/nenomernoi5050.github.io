@@ -293,6 +293,27 @@ h1 span {
   box-shadow: inset 0 1px rgba(255, 255, 255, .025);
 }
 
+.quick-facts .cpp-skill {
+  transform: rotate(-2deg);
+  border-color: rgba(229, 183, 109, .48);
+  background: linear-gradient(135deg, rgba(216, 155, 82, .17), rgba(115, 81, 47, .08));
+  color: #f0c17b;
+  transition: transform .22s ease, border-color .22s ease, box-shadow .22s ease;
+  box-shadow:
+    inset 0 1px rgba(255, 245, 221, .1),
+    0 0 15px rgba(216, 155, 82, .16),
+    0 7px 20px rgba(0, 0, 0, .2);
+}
+
+.quick-facts .cpp-skill:hover {
+  transform: rotate(-1.2deg) translateY(-2px);
+  border-color: rgba(240, 193, 123, .62);
+  box-shadow:
+    inset 0 1px rgba(255, 245, 221, .13),
+    0 0 19px rgba(216, 155, 82, .22),
+    0 9px 24px rgba(0, 0, 0, .24);
+}
+
 .hero .terminal {
   position: relative;
   border-color: rgba(211, 166, 105, .27);
