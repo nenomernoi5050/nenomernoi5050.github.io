@@ -229,7 +229,7 @@
       <div class="wrap">
         <div class="section-head">
           <div class="kicker">01 / Selected work</div>
-          <div><h2>Системы, а не просто экраны</h2><p class="section-copy">Восемь основных и два дополнительных кейса показывают работу с продуктом целиком: от модели данных и ML-конвейеров до интерфейса, развёртывания и поддержки. В публичных материалах используются только обезличенные или демонстрационные данные.</p></div>
+          <div><h2>Системы, а не просто экраны</h2><p class="section-copy">Девять основных и два дополнительных кейса показывают работу с продуктом целиком: от модели данных и ML-конвейеров до системных утилит, интерфейса, развёртывания и поддержки. В публичных материалах используются только обезличенные или демонстрационные данные.</p></div>
         </div>
 
         <article class="project">
@@ -406,6 +406,33 @@
           </div>
         </article>
 
+        <article class="project" id="diskscope">
+          <div class="project-copy">
+            <div class="meta"><span class="pill status">RUNNABLE SYSTEM TOOL</span><span class="pill">C++17 · READ-ONLY</span></div>
+            <h3>DiskScope</h3>
+            <p>Read-only инструмент для авторизованного расследования возможных утечек: ищет запрещённые маркеры в документах и остаточные сигнатуры в заранее снятом образе диска.</p>
+            <ul>
+              <li>TXT, CSV, JSON, XML, DOCX, XLSX и PPTX</li>
+              <li>Unicode-поиск с поддержкой кириллицы</li>
+              <li>Многопоточное сканирование и JSON-отчёт</li>
+              <li>Без удаления, raw-записи и изменения носителя</li>
+            </ul>
+            <div class="project-links"><a class="button" href="https://github.com/nenomernoi5050/diskscope-cpp" target="_blank" rel="noreferrer">Открыть C++ код и тесты ↗</a></div>
+          </div>
+          <div class="project-visual">
+            <div class="terminal" aria-label="Пример безопасного запуска DiskScope">
+              <div class="terminal-bar"><i></i><i></i><i></i></div>
+              <div class="terminal-body">
+                <div><span class="prompt">$</span> diskscope --root D:\audit-target</div>
+                <div class="dim">→ OOXML · text · Unicode</div>
+                <div><span class="prompt">scan</span> 1,284 files · 6 workers</div>
+                <div><span class="prompt">report</span> structured JSON findings</div>
+                <div class="ok">✓ read-only · tested · auditable</div>
+              </div>
+            </div>
+          </div>
+        </article>
+
         <article class="project">
           <div class="project-copy">
             <div class="meta"><span class="pill status">LIVE PROJECT</span><span class="pill">DJANGO</span></div>
@@ -450,6 +477,7 @@
           <div class="skill"><code>data.sql</code><h3>Данные</h3><p>PostgreSQL, SQLite, Redis, миграции и аналитические пайплайны.</p></div>
           <div class="skill"><code>integrate()</code><h3>Интеграции</h3><p>Bitrix24, Telegram, webhooks, внешние API, Playwright.</p></div>
           <div class="skill"><code>deploy.sh</code><h3>Эксплуатация</h3><p>Docker, Linux, Nginx, логирование, мониторинг и runbooks.</p></div>
+          <div class="skill"><code>systems.cpp</code><h3>Системный C++</h3><p>C++17, CMake, Unicode, OOXML и безопасные read-only инструменты.</p></div>
         </div>
       </div>
     </section>
