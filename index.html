@@ -1,0 +1,439 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Эдуард Новиков — Python Backend & Automation Engineer</title>
+  <meta name="description" content="Портфолио Python backend-разработчика: внутренние сервисы, API-интеграции и автоматизация бизнес-процессов.">
+  <meta name="color-scheme" content="dark">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230a0d12'/%3E%3Cpath d='M17 17h30v10H28v5h19v15H17V37h20v-5H17z' fill='%23ff5a36'/%3E%3C/svg%3E">
+  <style>
+    :root {
+      --bg: #080a0f;
+      --surface: #10141c;
+      --surface-2: #151b25;
+      --line: rgba(255,255,255,.12);
+      --text: #f5f7fb;
+      --muted: #9ea8b7;
+      --accent: #ff5a36;
+      --accent-2: #f4e85b;
+      --good: #65d68c;
+      --max: 1180px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background:
+        radial-gradient(circle at 80% 5%, rgba(255,90,54,.16), transparent 30rem),
+        radial-gradient(circle at 10% 28%, rgba(86,110,255,.09), transparent 25rem),
+        var(--bg);
+      color: var(--text);
+      font: 16px/1.6 Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+    a { color: inherit; }
+    img { display: block; max-width: 100%; }
+    .wrap { width: min(var(--max), calc(100% - 40px)); margin-inline: auto; }
+    .skip { position: absolute; left: -9999px; }
+    .skip:focus { left: 16px; top: 16px; z-index: 100; background: #fff; color: #000; padding: 10px 14px; }
+    header {
+      position: sticky; top: 0; z-index: 20;
+      border-bottom: 1px solid var(--line);
+      background: rgba(8,10,15,.82); backdrop-filter: blur(18px);
+    }
+    nav { min-height: 72px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; font-weight: 800; letter-spacing: -.02em; }
+    .brand-mark { width: 34px; height: 34px; display: grid; place-items: center; border: 1px solid rgba(255,90,54,.45); background: rgba(255,90,54,.12); color: var(--accent); border-radius: 10px; font-weight: 900; }
+    .nav-links { display: flex; align-items: center; gap: 22px; color: var(--muted); font-size: .92rem; }
+    .nav-links a { text-decoration: none; }
+    .nav-links a:hover { color: var(--text); }
+    .button { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 46px; padding: 0 18px; border-radius: 12px; text-decoration: none; font-weight: 750; border: 1px solid var(--line); background: var(--surface); transition: transform .2s, border-color .2s, background .2s; }
+    .button:hover { transform: translateY(-2px); border-color: rgba(255,255,255,.28); }
+    .button.primary { background: var(--accent); color: #160704; border-color: transparent; }
+    .hero { padding: 96px 0 72px; min-height: 680px; display: grid; align-items: center; }
+    .hero-grid { display: grid; grid-template-columns: minmax(0,1.15fr) minmax(340px,.85fr); gap: 56px; align-items: center; }
+    .eyebrow { display: flex; align-items: center; gap: 10px; color: var(--good); font-weight: 750; font-size: .86rem; letter-spacing: .08em; text-transform: uppercase; }
+    .dot { width: 8px; height: 8px; border-radius: 50%; background: currentColor; box-shadow: 0 0 20px currentColor; }
+    h1 { margin: 24px 0 22px; max-width: 840px; font-size: clamp(3.1rem, 7vw, 6.7rem); line-height: .93; letter-spacing: -.065em; }
+    h1 span { color: var(--accent); }
+    .lead { max-width: 740px; color: #c4ccd8; font-size: clamp(1.08rem, 2vw, 1.32rem); }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
+    .quick-facts { margin: 36px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 10px; list-style: none; }
+    .quick-facts li { padding: 8px 12px; border: 1px solid var(--line); border-radius: 999px; color: var(--muted); font-size: .86rem; background: rgba(255,255,255,.025); }
+    .proof { border-block: 1px solid var(--line); background: rgba(255,255,255,.02); }
+    .proof-grid { display: grid; grid-template-columns: repeat(4,1fr); }
+    .proof-item { padding: 26px 28px; border-right: 1px solid var(--line); }
+    .proof-item:last-child { border-right: 0; }
+    .proof-item strong { display: block; color: var(--accent); font: 700 clamp(1.7rem,3vw,2.3rem)/1 var(--sans); letter-spacing: -.04em; }
+    .proof-item span { display: block; margin-top: 8px; color: var(--muted); font-size: .86rem; line-height: 1.45; }
+    .terminal { border: 1px solid var(--line); border-radius: 22px; overflow: hidden; background: linear-gradient(155deg, rgba(21,27,37,.96), rgba(10,13,18,.96)); box-shadow: 0 28px 70px rgba(0,0,0,.38); transform: rotate(1.5deg); }
+    .terminal-bar { display: flex; gap: 7px; padding: 15px 18px; border-bottom: 1px solid var(--line); }
+    .terminal-bar i { width: 9px; height: 9px; border-radius: 50%; background: #3a414d; }
+    .terminal-bar i:first-child { background: var(--accent); }
+    .terminal-body { padding: 24px; font: 14px/1.8 ui-monospace, SFMono-Regular, Consolas, monospace; color: #c6cfdb; }
+    .terminal-body .prompt { color: var(--accent-2); }
+    .terminal-body .ok { color: var(--good); }
+    .terminal-body .dim { color: #697383; }
+    .section { padding: 92px 0; border-top: 1px solid var(--line); }
+    .section-head { display: grid; grid-template-columns: .45fr 1fr; gap: 40px; margin-bottom: 42px; align-items: start; }
+    .kicker { color: var(--accent); font: 800 .8rem/1.2 ui-monospace, monospace; letter-spacing: .12em; text-transform: uppercase; }
+    h2 { margin: 0; font-size: clamp(2.2rem, 4.5vw, 4.4rem); line-height: 1.02; letter-spacing: -.045em; }
+    .section-copy { margin: 14px 0 0; max-width: 720px; color: var(--muted); font-size: 1.05rem; }
+    .project { display: grid; grid-template-columns: 1.02fr .98fr; min-height: 500px; border: 1px solid var(--line); border-radius: 26px; overflow: hidden; background: var(--surface); margin-bottom: 24px; }
+    .project:nth-of-type(even) .project-visual { order: 2; }
+    .project-copy { padding: clamp(28px, 5vw, 58px); display: flex; flex-direction: column; justify-content: center; }
+    .meta { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
+    .pill { padding: 6px 10px; border-radius: 999px; background: rgba(255,255,255,.06); color: #c5ceda; font: 700 .76rem/1.2 ui-monospace, monospace; border: 1px solid var(--line); }
+    .pill.status { color: var(--good); border-color: rgba(101,214,140,.32); background: rgba(101,214,140,.08); }
+    .project h3 { margin: 0 0 14px; font-size: clamp(1.8rem, 3.4vw, 3rem); letter-spacing: -.04em; line-height: 1.05; }
+    .project p { color: var(--muted); margin: 0 0 20px; }
+    .project ul { margin: 0 0 28px; padding: 0; list-style: none; display: grid; gap: 8px; }
+    .project li { color: #d3dae4; padding-left: 22px; position: relative; }
+    .project li::before { content: "↳"; position: absolute; left: 0; color: var(--accent); }
+    .project-links { display: flex; flex-wrap: wrap; gap: 10px; }
+    .project-visual { min-height: 420px; background: #0b0e14; border-left: 1px solid var(--line); overflow: hidden; position: relative; }
+    .project-visual.photo { padding: 26px; display: grid; place-items: center; }
+    .shot { width: 100%; height: 100%; border-radius: 15px; border: 1px solid rgba(255,255,255,.14); object-fit: cover; object-position: top; box-shadow: 0 30px 70px rgba(0,0,0,.4); }
+    .aipay .shot { object-position: top; }
+    .dashboard { padding: 24px; display: grid; grid-template-columns: 138px 1fr; gap: 18px; min-height: 100%; color: #c9d2df; }
+    .side { border: 1px solid var(--line); background: #0d1118; border-radius: 16px; padding: 18px 12px; }
+    .side-logo { width: 36px; height: 36px; border-radius: 10px; background: var(--accent); margin-bottom: 26px; }
+    .side span { display: block; height: 8px; margin: 14px 0; border-radius: 5px; background: #252d39; }
+    .side span:nth-child(3), .side span:nth-child(6) { background: rgba(255,90,54,.58); width: 75%; }
+    .dash-main { display: grid; align-content: start; gap: 16px; }
+    .dash-title { display: flex; align-items: center; justify-content: space-between; }
+    .dash-title b { font-size: 1.1rem; }
+    .dash-title i { width: 90px; height: 28px; border-radius: 8px; background: var(--accent); }
+    .stats { display: grid; grid-template-columns: repeat(3,1fr); gap: 10px; }
+    .stat { padding: 14px; background: #121823; border: 1px solid var(--line); border-radius: 13px; }
+    .stat small { color: #7e8998; }
+    .stat strong { display: block; margin-top: 8px; font-size: 1.3rem; }
+    .chart { height: 125px; position: relative; overflow: hidden; border: 1px solid var(--line); border-radius: 14px; background: linear-gradient(180deg, rgba(255,90,54,.08), transparent); }
+    .chart::before { content: ""; position: absolute; inset: 24px 14px 18px; background: linear-gradient(135deg, transparent 0 24%, var(--accent) 25% 27%, transparent 28% 44%, #f4e85b 45% 47%, transparent 48% 62%, var(--accent) 63% 65%, transparent 66%); opacity: .8; }
+    .table { display: grid; gap: 7px; }
+    .row { min-height: 38px; display: grid; grid-template-columns: 1.5fr 1fr .8fr; align-items: center; padding: 0 12px; border: 1px solid var(--line); border-radius: 10px; background: #10161f; font-size: .72rem; color: #8792a1; }
+    .row b { color: #d7dee8; }
+    .case-strip { display: grid; grid-template-columns: repeat(2,1fr); gap: 24px; margin-top: 24px; }
+    .mini-case { border: 1px solid var(--line); border-radius: 22px; padding: 30px; background: linear-gradient(145deg, #111620, #0c1017); }
+    .mini-case h3 { margin: 14px 0 10px; font-size: 1.55rem; }
+    .mini-case p { color: var(--muted); }
+    .flow { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-top: 22px; }
+    .flow span { border: 1px solid var(--line); padding: 7px 9px; border-radius: 8px; color: #c9d2dc; font: .76rem ui-monospace, monospace; }
+    .flow i { color: var(--accent); font-style: normal; }
+    .skills { display: grid; grid-template-columns: repeat(4,1fr); gap: 14px; }
+    .skill { min-height: 170px; padding: 22px; border: 1px solid var(--line); border-radius: 18px; background: rgba(255,255,255,.025); }
+    .skill code { color: var(--accent-2); font-size: .78rem; }
+    .skill h3 { margin: 32px 0 8px; font-size: 1.15rem; }
+    .skill p { margin: 0; color: var(--muted); font-size: .9rem; }
+    .contact { padding: 96px 0 110px; }
+    .contact-box { border: 1px solid rgba(255,90,54,.35); background: linear-gradient(120deg, rgba(255,90,54,.13), rgba(244,232,91,.04)); border-radius: 28px; padding: clamp(32px, 7vw, 76px); display: grid; grid-template-columns: 1fr auto; gap: 36px; align-items: center; }
+    .contact h2 { max-width: 760px; }
+    .contact p { color: #bdc6d3; max-width: 700px; }
+    .contact-actions { display: grid; gap: 10px; min-width: 220px; }
+    footer { border-top: 1px solid var(--line); padding: 28px 0; color: #748091; font-size: .85rem; }
+    footer .wrap { display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
+    @media (max-width: 900px) {
+      .nav-links a:not(.button) { display: none; }
+      .hero { padding-top: 72px; }
+      .hero-grid, .section-head, .project, .contact-box { grid-template-columns: 1fr; }
+      .terminal { transform: none; }
+      .project:nth-of-type(even) .project-visual { order: 0; }
+      .project-visual { border-left: 0; border-top: 1px solid var(--line); }
+      .proof-grid { grid-template-columns: repeat(2,1fr); }
+      .proof-item:nth-child(2) { border-right: 0; }
+      .proof-item:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
+      .skills { grid-template-columns: repeat(2,1fr); }
+      .contact-actions { display: flex; flex-wrap: wrap; }
+    }
+    @media (max-width: 620px) {
+      .wrap { width: min(100% - 24px, var(--max)); }
+      nav { min-height: 62px; }
+      .brand span:last-child { display: none; }
+      .nav-links { gap: 8px; }
+      .hero { min-height: auto; padding: 58px 0 64px; }
+      h1 { font-size: clamp(2.75rem, 15vw, 4.6rem); }
+      .section { padding: 68px 0; }
+      .project-copy { padding: 28px 22px; }
+      .project-visual { min-height: 330px; }
+      .dashboard { grid-template-columns: 76px 1fr; padding: 12px; gap: 10px; }
+      .stats { grid-template-columns: 1fr; }
+      .stats .stat:nth-child(n+2) { display: none; }
+      .case-strip, .skills { grid-template-columns: 1fr; }
+      .proof-grid { grid-template-columns: 1fr; }
+      .proof-item { border-right: 0; border-bottom: 1px solid var(--line); }
+      .proof-item:last-child { border-bottom: 0; }
+      .contact-actions { display: grid; }
+    }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .button { transition: none; } }
+  </style>
+</head>
+<body>
+  <a class="skip" href="#main">К содержанию</a>
+  <header>
+    <nav class="wrap" aria-label="Основная навигация">
+      <a class="brand" href="#top"><span class="brand-mark">ЭН</span><span>Эдуард Новиков</span></a>
+      <div class="nav-links">
+        <a href="#projects">Проекты</a>
+        <a href="#stack">Стек</a>
+        <a class="button" href="https://github.com/nenomernoi5050" target="_blank" rel="noreferrer">GitHub ↗</a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="top">
+      <div class="wrap hero-grid">
+        <div>
+          <div class="eyebrow"><span class="dot"></span> открыт к предложениям</div>
+          <h1>Python backend<br><span>& automation</span></h1>
+          <p class="lead">Разрабатываю внутренние сервисы, API-интеграции и автоматизацию бизнес-процессов. Превращаю ручные операции в управляемые системы с понятной архитектурой и контролем результата.</p>
+          <div class="hero-actions">
+            <a class="button primary" href="#projects">Смотреть кейсы ↓</a>
+            <a class="button" href="mailto:nenomernoi2020@gmail.com">Написать на email ↗</a>
+          </div>
+          <ul class="quick-facts" aria-label="Ключевые технологии">
+            <li>Python · Django · FastAPI</li>
+            <li>PostgreSQL · Redis</li>
+            <li>Docker · Linux</li>
+            <li>REST · Bitrix24 · Telegram</li>
+            <li>Playwright · LLM</li>
+          </ul>
+        </div>
+        <div class="terminal" aria-label="Схема типового рабочего процесса">
+          <div class="terminal-bar"><i></i><i></i><i></i></div>
+          <div class="terminal-body">
+            <div><span class="prompt">$</span> inspect process</div>
+            <div class="dim">→ find repeated manual steps</div>
+            <div><span class="prompt">$</span> design service</div>
+            <div class="dim">→ API · data model · failure paths</div>
+            <div><span class="prompt">$</span> automate workflow</div>
+            <div class="dim">→ integrations · queues · notifications</div>
+            <div><span class="prompt">$</span> ship & observe</div>
+            <div class="ok">✓ reproducible, traceable, maintainable</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="proof" aria-label="Подтверждённые результаты">
+      <div class="wrap proof-grid">
+        <div class="proof-item"><strong>98 000+</strong><span>документов в датасете для автоматической обработки</span></div>
+        <div class="proof-item"><strong>15+</strong><span>парсеров для извлечения и нормализации данных</span></div>
+        <div class="proof-item"><strong>−30%</strong><span>времени первичной обработки документов</span></div>
+        <div class="proof-item"><strong>6 ч/нед.</strong><span>ручной работы высвобождено у сотрудников</span></div>
+      </div>
+    </section>
+
+    <section class="section" id="projects">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="kicker">01 / Selected work</div>
+          <div><h2>Системы, а не просто экраны</h2><p class="section-copy">Семь основных и два дополнительных кейса показывают работу с продуктом целиком: от модели данных и интеграций до интерфейса, развёртывания и поддержки. В публичных материалах используются только обезличенные или демонстрационные данные.</p></div>
+        </div>
+
+        <article class="project">
+          <div class="project-copy">
+            <div class="meta"><span class="pill status">SANITIZED CASE STUDY</span><span class="pill">2026</span></div>
+            <h3>LeadHunter AI</h3>
+            <p>Внутренняя B2B CRM: сбор компаний, аудит сайтов, скоринг лидов, управление сделками и подготовка персонализированных предложений.</p>
+            <ul>
+              <li>Модульный FastAPI backend и React-интерфейс</li>
+              <li>PostgreSQL, очереди задач и контролируемая автоматизация</li>
+              <li>Playwright-аудит сайтов и локальные LLM-интеграции</li>
+              <li>Ролевой доступ, журналирование и операционные сценарии</li>
+            </ul>
+            <div class="project-links"><a class="button" href="https://github.com/nenomernoi5050/leadhunter-ai-portfolio" target="_blank" rel="noreferrer">Архитектура и кейс ↗</a></div>
+          </div>
+          <div class="project-visual photo"><img class="shot" src="assets/leadhunter-dashboard.jpg" alt="Операционный дашборд LeadHunter AI на синтетических данных"></div>
+        </article>
+
+        <article class="project">
+          <div class="project-copy">
+            <div class="meta"><span class="pill status">WORK PROJECT · SANITIZED</span><span class="pill">PLAYWRIGHT</span></div>
+            <h3>Document Workflow Automation</h3>
+            <p>Многоэтапная автоматизация обработки документов в закрытой информационной системе: сбор и нормализация данных, проверка карточек, вложения, регистрация и доставка.</p>
+            <ul>
+              <li>Ограниченная асинхронность, пагинация и дедупликация</li>
+              <li>Идемпотентность и продолжение с подтверждённого этапа</li>
+              <li>Playwright RPA с fallback-селекторами</li>
+              <li>Структурные логи и диагностические снимки ошибок</li>
+            </ul>
+            <div class="project-links"><a class="button primary" href="https://github.com/nenomernoi5050/document-workflow-case-study" target="_blank" rel="noreferrer">Архитектура и решения ↗</a></div>
+          </div>
+          <div class="project-visual">
+            <div class="terminal" aria-label="Этапы автоматизации документооборота">
+              <div class="terminal-bar"><i></i><i></i><i></i></div>
+              <div class="terminal-body">
+                <div><span class="prompt">01</span> collect & normalize</div>
+                <div class="dim">→ async API · pagination · dedupe</div>
+                <div><span class="prompt">02</span> validate document card</div>
+                <div class="dim">→ related docs · attachments</div>
+                <div><span class="prompt">03</span> register & deliver</div>
+                <div class="dim">→ idempotent steps · checkpoints</div>
+                <div class="ok">✓ observable · retryable · auditable</div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="project">
+          <div class="project-copy">
+            <div class="meta"><span class="pill status">WORK PROJECT · SANITIZED</span><span class="pill">ASTERISK</span></div>
+            <h3>Automated IVR Pipeline</h3>
+            <p>Сервис персонализированных голосовых уведомлений: пакетный TTS, доставка на PBX, звонки, DTMF и контролируемые повторные попытки.</p>
+            <ul>
+              <li>Явная state machine для каждого контакта</li>
+              <li>SSH/SFTP-интеграция с Asterisk</li>
+              <li>Retry-политика и архивирование кампаний</li>
+              <li>SQLite-история и Telegram-мониторинг</li>
+            </ul>
+            <div class="project-links"><a class="button" href="https://github.com/nenomernoi5050/ivr-notification-case-study" target="_blank" rel="noreferrer">Читать case study ↗</a></div>
+          </div>
+          <div class="project-visual">
+            <div class="terminal" aria-label="Поток IVR-уведомлений">
+              <div class="terminal-bar"><i></i><i></i><i></i></div>
+              <div class="terminal-body">
+                <div><span class="prompt">campaign</span> → validate recipients</div>
+                <div><span class="prompt">tts</span> → build audio batch</div>
+                <div><span class="prompt">pbx</span> → call & collect DTMF</div>
+                <div><span class="prompt">state</span> → persist every attempt</div>
+                <div><span class="prompt">retry</span> → transient failures only</div>
+                <div class="ok">✓ monitored through Telegram</div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="project">
+          <div class="project-copy">
+            <div class="meta"><span class="pill status">WORK PROJECT · SANITIZED</span><span class="pill">DJANGO + REACT</span></div>
+            <h3>Rental Operations Platform</h3>
+            <p>Платформа краткосрочной аренды: публичный каталог, фильтры и карта, синхронизация доступности и цен, операционная панель для контента и инвентаря.</p>
+            <ul>
+              <li>Django/DRF и PostgreSQL как единый источник данных</li>
+              <li>React/TypeScript-каталог и геоинтерфейс</li>
+              <li>Интеграция с внешним источником доступности</li>
+              <li>Custom Django Admin, Docker и Nginx</li>
+            </ul>
+            <div class="project-links"><a class="button" href="https://github.com/nenomernoi5050/rental-operations-case-study" target="_blank" rel="noreferrer">Архитектура платформы ↗</a></div>
+          </div>
+          <div class="project-visual">
+            <div class="terminal" aria-label="Архитектура rental operations platform">
+              <div class="terminal-bar"><i></i><i></i><i></i></div>
+              <div class="terminal-body">
+                <div><span class="prompt">guest</span> React catalog + map</div>
+                <div class="dim">↕ normalized REST API</div>
+                <div><span class="prompt">core</span> Django · DRF · PostgreSQL</div>
+                <div class="dim">↕ availability & price sync</div>
+                <div><span class="prompt">ops</span> custom Django Admin</div>
+                <div class="ok">✓ Docker · Nginx · isolated access</div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="project aipay">
+          <div class="project-copy">
+            <div class="meta"><span class="pill status">PRODUCT UI PROTOTYPE</span><span class="pill">2026</span></div>
+            <h3>AIPay</h3>
+            <p>Прототип сервиса управления подписками на AI-инструменты: каталог, тарифы, заказы, поставщики, поддержка и личный кабинет.</p>
+            <ul>
+              <li>Продуктовая структура каталога, заказов и ценообразования</li>
+              <li>Адаптивный интерфейс от мобильного до desktop</li>
+              <li>Проработанный пользовательский путь оформления</li>
+              <li>Публичное демо использует только условные данные</li>
+            </ul>
+            <div class="project-links"><a class="button" href="https://github.com/nenomernoi5050/aipay-demo" target="_blank" rel="noreferrer">Открыть demo-код ↗</a></div>
+          </div>
+          <div class="project-visual photo"><img class="shot" src="assets/aipay.jpg" alt="Адаптивная главная страница прототипа AIPay"></div>
+        </article>
+
+        <article class="project">
+          <div class="project-copy">
+            <div class="meta"><span class="pill status">RUNNABLE CODE SAMPLE</span><span class="pill">FASTAPI</span></div>
+            <h3>Document Intake API</h3>
+            <p>Открытый минимальный сервис для первичной обработки входящих документов: нормализация текста, классификация, извлечение реквизитов и детерминированный fingerprint.</p>
+            <ul>
+              <li>FastAPI и типизированные Pydantic-схемы</li>
+              <li>Изолированная бизнес-логика без внешних сервисов</li>
+              <li>Содержательные pytest-тесты и GitHub Actions CI</li>
+              <li>Dockerfile, healthcheck и воспроизводимый запуск</li>
+            </ul>
+            <div class="project-links"><a class="button primary" href="https://github.com/nenomernoi5050/document-intake-api" target="_blank" rel="noreferrer">Открыть код и тесты ↗</a></div>
+          </div>
+          <div class="project-visual">
+            <div class="terminal" aria-label="Пример ответа Document Intake API">
+              <div class="terminal-bar"><i></i><i></i><i></i></div>
+              <div class="terminal-body">
+                <div><span class="prompt">POST</span> /v1/documents/inspect</div>
+                <div class="dim">{ "filename": "invoice.txt",</div>
+                <div class="dim">&nbsp; "document_type": "invoice",</div>
+                <div class="dim">&nbsp; "fields": { "number": "42" },</div>
+                <div class="ok">&nbsp; "status": "processed" }</div>
+                <div><span class="prompt">✓</span> pytest · CI · Docker</div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="project">
+          <div class="project-copy">
+            <div class="meta"><span class="pill status">LIVE PROJECT</span><span class="pill">DJANGO</span></div>
+            <h3>Yakarta.pro</h3>
+            <p>Собственный коммерческий веб-проект: услуги разработки и сопровождения сайтов, контентные страницы, заявки и производственный цикл обновлений.</p>
+            <ul>
+              <li>Проектирование структуры и UI-системы</li>
+              <li>Django, статическая сборка и автоматизация публикации</li>
+              <li>Адаптивная вёрстка и проверка ключевых сценариев</li>
+              <li>Рабочий production-сайт с формой обращения</li>
+            </ul>
+            <div class="project-links"><a class="button primary" href="https://yakarta.pro" target="_blank" rel="noreferrer">Открыть сайт ↗</a><a class="button" href="https://github.com/nenomernoi5050/yakarta-case-study" target="_blank" rel="noreferrer">Читать кейс ↗</a></div>
+          </div>
+          <div class="project-visual photo"><img class="shot" src="assets/yakarta.jpg" alt="Главный экран сайта Yakarta.pro"></div>
+        </article>
+
+        <div class="case-strip">
+          <article class="mini-case">
+            <div class="kicker">Integration case</div>
+            <h3>Bitrix24 Document Bot</h3>
+            <p>Автоматизация подготовки договоров и актов по данным CRM с выдачей документов через Telegram. Исходники закрыты из-за интеграционных и клиентских данных.</p>
+            <div class="flow"><span>Bitrix24</span><i>→</i><span>Python</span><i>→</i><span>DOCX</span><i>→</i><span>Telegram</span></div>
+          </article>
+          <article class="mini-case">
+            <div class="kicker">Data pipeline</div>
+            <h3>Geo Analytics Pipeline</h3>
+            <p>Конвейер сбора, нормализации и аналитики открытых данных о компаниях. PostgreSQL как основное хранилище, конфигурируемые этапы и отчёты.</p>
+            <div class="flow"><span>Collect</span><i>→</i><span>Enrich</span><i>→</i><span>PostgreSQL</span><i>→</i><span>Analyze</span></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="stack">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="kicker">02 / Core stack</div>
+          <div><h2>Рабочий стек</h2><p class="section-copy">Инструменты подбираю под задачу. Основной фокус — Python-сервисы, интеграции, надёжная работа с данными и автоматизация процессов.</p></div>
+        </div>
+        <div class="skills">
+          <div class="skill"><code>backend.py</code><h3>Python backend</h3><p>Django, FastAPI, REST API, фоновые задачи, pytest.</p></div>
+          <div class="skill"><code>data.sql</code><h3>Данные</h3><p>PostgreSQL, SQLite, Redis, миграции и аналитические пайплайны.</p></div>
+          <div class="skill"><code>integrate()</code><h3>Интеграции</h3><p>Bitrix24, Telegram, webhooks, внешние API, Playwright.</p></div>
+          <div class="skill"><code>deploy.sh</code><h3>Эксплуатация</h3><p>Docker, Linux, Nginx, логирование, мониторинг и runbooks.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact" id="contact">
+      <div class="wrap">
+        <div class="contact-box">
+          <div><div class="kicker">Связаться</div><h2>Готов обсудить backend, интеграции и автоматизацию</h2><p>Рассматриваю проектную работу и постоянные позиции. На встрече могу подробно разобрать архитектуру, ограничения и личный вклад в каждый кейс.</p></div>
+          <div class="contact-actions"><a class="button primary" href="mailto:nenomernoi2020@gmail.com">nenomernoi2020@gmail.com</a><a class="button" href="https://github.com/nenomernoi5050" target="_blank" rel="noreferrer">GitHub ↗</a></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer><div class="wrap"><span>© 2026 Эдуард Новиков</span><span>Санкт-Петербург · удалённо / гибрид</span></div></footer>
+</body>
+</html>
