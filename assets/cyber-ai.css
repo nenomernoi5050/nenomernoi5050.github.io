@@ -118,22 +118,20 @@ nav { min-height: 78px; }
   height: 42px;
   flex: 0 0 42px;
   overflow: hidden;
-  border: 1px solid rgba(92, 220, 250, .34);
-  border-radius: 13px;
-  background:
-    linear-gradient(145deg, rgba(17, 39, 57, .8), rgba(9, 15, 27, .92)),
-    url("ai-code-emblem.png") center / 84% no-repeat;
-  background-blend-mode: normal;
+  border: 1px solid rgba(92, 220, 250, .28);
+  border-radius: 11px;
+  background: linear-gradient(145deg, rgba(14, 31, 45, .88), rgba(7, 15, 26, .96));
   color: transparent;
   font-size: 0;
-  box-shadow: inset 0 0 20px rgba(66, 211, 245, .1), 0 0 22px rgba(89, 203, 255, .08);
+  box-shadow: inset 0 0 16px rgba(66, 211, 245, .055);
 }
 
 .brand-mark::before {
-  content: "";
-  width: 100%;
-  height: 100%;
-  background: url("ai-code-emblem.png") center / 86% no-repeat;
+  content: "<>";
+  color: #dffaff;
+  font: 790 .72rem/1 var(--mono);
+  letter-spacing: -.2em;
+  transform: translateX(-.05em);
 }
 
 .nav-links {
@@ -309,8 +307,8 @@ h1 span {
   width: 88px;
   height: 88px;
   background: url("ai-code-emblem.png") center / contain no-repeat;
-  opacity: .16;
-  filter: saturate(.8);
+  opacity: .055;
+  filter: saturate(.55);
   pointer-events: none;
 }
 
@@ -447,6 +445,14 @@ h2 {
   transition: transform .28s ease, border-color .28s ease, box-shadow .28s ease;
 }
 
+.project:has(.project-visual.photo) {
+  min-height: 440px;
+}
+
+.project:has(.project-visual.photo) .project-copy {
+  padding-block: clamp(34px, 3.8vw, 48px);
+}
+
 .project::before {
   content: "";
   position: absolute;
@@ -457,6 +463,14 @@ h2 {
   height: 1px;
   background: linear-gradient(90deg, transparent 10%, rgba(76, 220, 248, .72), rgba(163, 143, 255, .62) 66%, transparent 92%);
   opacity: .7;
+}
+
+.project:nth-of-type(3n + 2)::before {
+  background: linear-gradient(90deg, transparent 8%, rgba(169, 145, 255, .64), rgba(83, 220, 247, .7) 68%, transparent 94%);
+}
+
+.project:nth-of-type(3n)::before {
+  background: linear-gradient(90deg, transparent 12%, rgba(83, 220, 247, .62), rgba(255, 130, 107, .5) 72%, transparent 92%);
 }
 
 .project:hover {
@@ -485,7 +499,7 @@ h2 {
   border-radius: 7px;
   background: rgba(20, 37, 55, .62);
   color: #b9c9d8;
-  font: 720 .67rem/1.2 var(--mono);
+  font: 720 .74rem/1.2 var(--mono);
   letter-spacing: .045em;
 }
 
@@ -539,6 +553,20 @@ h2 {
     #060d17;
 }
 
+.project:nth-of-type(3n + 2) .project-visual {
+  background:
+    radial-gradient(circle at 28% 26%, rgba(154, 124, 246, .13), transparent 18rem),
+    radial-gradient(circle at 82% 78%, rgba(65, 205, 236, .08), transparent 20rem),
+    #060d17;
+}
+
+.project:nth-of-type(3n) .project-visual {
+  background:
+    radial-gradient(circle at 72% 70%, rgba(255, 120, 103, .075), transparent 17rem),
+    radial-gradient(circle at 22% 18%, rgba(66, 207, 240, .11), transparent 20rem),
+    #060d17;
+}
+
 .project:nth-of-type(even) .project-visual {
   border-right: 1px solid rgba(120, 198, 235, .14);
   border-left: 0;
@@ -562,6 +590,19 @@ h2 {
   background:
     radial-gradient(circle at 50% 42%, rgba(71, 198, 235, .11), transparent 64%),
     linear-gradient(145deg, #08111d, #050a12);
+}
+
+.project:has(.project-visual.photo) .project-visual.photo {
+  min-height: 0;
+}
+
+.project:nth-of-type(3n + 2) .project-visual > .terminal {
+  border-color: rgba(174, 151, 255, .25);
+  box-shadow: 0 35px 85px rgba(0, 0, 0, .46), 0 0 42px rgba(142, 115, 242, .055);
+}
+
+.project:nth-of-type(3n) .project-visual > .terminal {
+  border-color: rgba(239, 139, 122, .19);
 }
 
 .shot-link {
@@ -756,6 +797,7 @@ footer {
   .hero .terminal { width: min(100%, 620px); transform: none; }
   .section-head { gap: 22px; }
   .project { min-height: 0; }
+  .project:has(.project-visual.photo) { min-height: 0; }
   .project:nth-of-type(even) .project-copy { order: 0; }
   .project:nth-of-type(even) .project-visual { order: 0; }
   .project-visual,
@@ -782,7 +824,7 @@ footer {
   .hero-actions .button { width: 100%; }
   .quick-facts { margin-top: 30px; }
   .hero .terminal { margin-top: 6px; }
-  .terminal-body { font-size: 11px; overflow-wrap: anywhere; }
+  .terminal-body { font-size: 12px; overflow-wrap: anywhere; }
   .proof-item { min-height: 0; padding: 25px 22px; }
   .proof-item::before { left: 22px; }
   .section { padding: 78px 0; }
@@ -804,7 +846,7 @@ footer {
   .project-visual > .terminal { width: calc(100% - 28px); margin: 28px 14px; }
   .mini-case { padding: 27px 22px; }
   .flow { gap: 6px; }
-  .flow span { padding: 6px 7px; font-size: .65rem; }
+  .flow span { padding: 6px 7px; font-size: .71rem; }
   .skill { min-height: 165px; }
   .contact { padding: 80px 0 88px; }
   .contact-box { padding: 30px 22px; }
