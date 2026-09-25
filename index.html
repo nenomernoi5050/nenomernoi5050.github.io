@@ -411,10 +411,11 @@
           <div class="project-copy">
             <div class="meta"><span class="pill status">RUNNABLE SYSTEM TOOL</span><span class="pill">C++17 · READ-ONLY</span></div>
             <h3>DiskScope</h3>
-            <p>Read-only инструмент для авторизованного расследования возможных утечек: ищет запрещённые маркеры в документах и остаточные сигнатуры в заранее снятом образе диска.</p>
+            <p>Read-only инструмент для расследования возможных утечек: ищет запрещённые маркеры в документах, offline-реестре и остатках удалённых данных по всему заранее снятому образу диска.</p>
             <ul>
-              <li>TXT, CSV, JSON, XML, DOCX, XLSX и PPTX</li>
-              <li>Unicode-поиск с поддержкой кириллицы</li>
+              <li>Сигнатуры удалённых файлов и частично перезаписанных данных</li>
+              <li>Неразмеченные и скрытые области, если они присутствуют в образе</li>
+              <li>TXT, REG, DOCX, XLSX, PPTX и offline Registry hives</li>
               <li>Многопоточное сканирование и JSON-отчёт</li>
               <li>Без удаления, raw-записи и изменения носителя</li>
             </ul>
@@ -425,7 +426,7 @@
               <div class="terminal-bar"><i></i><i></i><i></i></div>
               <div class="terminal-body">
                 <div><span class="prompt">$</span> diskscope --root D:\audit-target</div>
-                <div class="dim">→ OOXML · text · Unicode</div>
+                <div class="dim">→ documents · deleted remnants · registry hives</div>
                 <div><span class="prompt">scan</span> 1,284 files · 6 workers</div>
                 <div><span class="prompt">report</span> structured JSON findings</div>
                 <div class="ok">✓ read-only · tested · auditable</div>
