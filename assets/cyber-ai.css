@@ -48,7 +48,7 @@ body::before {
   z-index: -2;
   pointer-events: none;
   opacity: .18;
-  background: url("data-mesh-background.png") center top / cover no-repeat;
+  background: url("data-mesh-background.webp") center top / cover no-repeat;
   mask-image: linear-gradient(to bottom, transparent 0, #000 15%, #000 72%, transparent 100%);
 }
 
@@ -208,7 +208,7 @@ nav { min-height: 78px; }
   background:
     linear-gradient(90deg, rgba(10, 9, 8, .98) 0%, rgba(14, 12, 10, .92) 38%, rgba(16, 13, 10, .36) 72%, rgba(12, 10, 8, .24) 100%),
     linear-gradient(180deg, transparent 55%, var(--bg) 100%),
-    url("ai-hero-environment.png") center right / cover no-repeat;
+    url("ai-hero-environment.webp") center right / cover no-repeat;
 }
 
 .hero::before {
@@ -330,7 +330,7 @@ h1 span {
   bottom: 14px;
   width: 88px;
   height: 88px;
-  background: url("ai-code-emblem.png") center / contain no-repeat;
+  background: url("ai-code-emblem.webp") center / contain no-repeat;
   opacity: .12;
   filter: saturate(.72);
   pointer-events: none;
@@ -412,7 +412,7 @@ h1 span {
   inset: 0;
   background:
     linear-gradient(180deg, rgba(14, 12, 10, .56), rgba(10, 9, 8, .86)),
-    url("data-mesh-background.png") center top / min(1800px, 135vw) auto no-repeat;
+    url("data-mesh-background.webp") center top / min(1800px, 135vw) auto no-repeat;
   opacity: .55;
   pointer-events: none;
 }
@@ -805,7 +805,7 @@ h2 {
   border-radius: 26px;
   background:
     linear-gradient(116deg, rgba(48, 39, 29, .9), rgba(37, 30, 24, .78) 63%, rgba(55, 35, 24, .62)),
-    url("data-mesh-background.png") center / cover;
+    url("data-mesh-background.webp") center / cover;
   box-shadow: 0 38px 100px rgba(0, 0, 0, .3), inset 0 1px rgba(255, 255, 255, .045);
 }
 
@@ -816,7 +816,7 @@ h2 {
   bottom: -128px;
   width: 330px;
   height: 330px;
-  background: url("ai-code-emblem.png") center / contain no-repeat;
+  background: url("ai-code-emblem.webp") center / contain no-repeat;
   opacity: .12;
   pointer-events: none;
 }
@@ -848,7 +848,7 @@ footer {
     padding: 88px 0 76px;
     background:
       linear-gradient(180deg, rgba(10, 9, 8, .84) 0%, rgba(12, 10, 8, .78) 44%, rgba(11, 9, 8, .95) 100%),
-      url("ai-hero-environment.png") 67% center / cover no-repeat;
+      url("ai-hero-environment.webp") 67% center / cover no-repeat;
   }
   .hero-grid, .section-head, .project, .contact-box { grid-template-columns: 1fr; }
   .skills { grid-template-columns: repeat(2, minmax(0, 1fr)); }
