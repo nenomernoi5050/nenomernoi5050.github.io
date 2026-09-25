@@ -114,34 +114,27 @@ nav { min-height: 78px; }
 }
 
 .brand-mark {
-  position: relative;
   width: 48px;
   height: 48px;
   flex: 0 0 48px;
-  overflow: hidden;
-  border: 1px solid rgba(216, 155, 82, .28);
-  border-radius: 12px;
-  background: linear-gradient(145deg, rgba(43, 36, 28, .9), rgba(19, 17, 14, .97));
+  border: 0;
+  border-radius: 0;
+  background: transparent;
   color: transparent;
   font-size: 0;
-  box-shadow: inset 0 0 16px rgba(216, 155, 82, .07), 0 0 22px rgba(173, 103, 64, .06);
+  box-shadow: none;
 }
 
 .brand-mark img {
   width: 100%;
   height: 100%;
   object-fit: contain;
-  filter: saturate(.9) contrast(1.04);
-  transform: scale(1.24);
+  filter: none;
+  transform: none;
 }
 
 .brand-mark::after {
-  content: "";
-  position: absolute;
-  inset: 1px;
-  border-radius: 10px;
-  background: linear-gradient(135deg, rgba(255, 250, 240, .18), transparent 34%, transparent 72%, rgba(216, 155, 82, .09));
-  pointer-events: none;
+  content: none;
 }
 
 .nav-links {
