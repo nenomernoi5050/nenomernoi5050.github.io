@@ -114,24 +114,34 @@ nav { min-height: 78px; }
 }
 
 .brand-mark {
-  width: 42px;
-  height: 42px;
-  flex: 0 0 42px;
+  position: relative;
+  width: 48px;
+  height: 48px;
+  flex: 0 0 48px;
   overflow: hidden;
   border: 1px solid rgba(92, 220, 250, .28);
-  border-radius: 11px;
+  border-radius: 12px;
   background: linear-gradient(145deg, rgba(14, 31, 45, .88), rgba(7, 15, 26, .96));
   color: transparent;
   font-size: 0;
-  box-shadow: inset 0 0 16px rgba(66, 211, 245, .055);
+  box-shadow: inset 0 0 16px rgba(66, 211, 245, .08), 0 0 22px rgba(82, 205, 246, .08);
 }
 
-.brand-mark::before {
-  content: "<>";
-  color: #dffaff;
-  font: 790 .72rem/1 var(--mono);
-  letter-spacing: -.2em;
-  transform: translateX(-.05em);
+.brand-mark img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: saturate(.9) contrast(1.04);
+  transform: scale(1.24);
+}
+
+.brand-mark::after {
+  content: "";
+  position: absolute;
+  inset: 1px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, .2), transparent 34%, transparent 72%, rgba(99, 218, 250, .1));
+  pointer-events: none;
 }
 
 .nav-links {
@@ -307,8 +317,8 @@ h1 span {
   width: 88px;
   height: 88px;
   background: url("ai-code-emblem.png") center / contain no-repeat;
-  opacity: .055;
-  filter: saturate(.55);
+  opacity: .12;
+  filter: saturate(.72);
   pointer-events: none;
 }
 
@@ -608,15 +618,35 @@ h2 {
 .shot-link {
   position: relative;
   z-index: 1;
+  isolation: isolate;
   width: 100%;
   height: auto;
   min-height: 0;
-  padding: 7px;
-  border: 1px solid rgba(136, 207, 241, .2);
-  border-radius: 15px;
-  background: rgba(3, 8, 15, .88);
-  box-shadow: 0 28px 70px rgba(0, 0, 0, .45), 0 0 36px rgba(61, 194, 235, .045);
-  transition: transform .28s ease, border-color .28s ease;
+  padding: 9px;
+  overflow: hidden;
+  border: 1px solid rgba(177, 230, 255, .32);
+  border-radius: 17px;
+  background: linear-gradient(145deg, rgba(205, 239, 255, .11), rgba(52, 76, 108, .08));
+  box-shadow:
+    0 28px 70px rgba(0, 0, 0, .45),
+    0 0 40px rgba(61, 194, 235, .07),
+    inset 0 1px rgba(255, 255, 255, .38),
+    inset 0 -1px rgba(111, 190, 230, .12);
+  backdrop-filter: blur(16px) saturate(1.12);
+  transition: transform .28s ease, border-color .28s ease, box-shadow .28s ease;
+}
+
+.shot-link::before {
+  content: "";
+  position: absolute;
+  z-index: 2;
+  inset: 0;
+  border-radius: inherit;
+  background:
+    linear-gradient(116deg, rgba(255, 255, 255, .22) 0%, rgba(255, 255, 255, .06) 16%, transparent 34%),
+    linear-gradient(162deg, transparent 54%, rgba(78, 216, 249, .1) 78%, rgba(181, 144, 255, .12) 100%);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .06);
+  pointer-events: none;
 }
 
 .shot-link::after {
@@ -633,24 +663,33 @@ h2 {
   background: rgba(4, 12, 22, .8);
   color: #c8f3ff;
   font: 700 .8rem/1 var(--mono);
+  z-index: 3;
   opacity: 0;
   transform: translateY(4px);
   transition: opacity .2s ease, transform .2s ease;
   backdrop-filter: blur(8px);
 }
 
-.shot-link:hover { transform: scale(1.008); border-color: rgba(107, 220, 251, .43); }
+.shot-link:hover {
+  transform: scale(1.008);
+  border-color: rgba(164, 232, 255, .5);
+  box-shadow: 0 32px 78px rgba(0, 0, 0, .48), 0 0 48px rgba(61, 194, 235, .11), inset 0 1px rgba(255, 255, 255, .46);
+}
 .shot-link:hover::after { opacity: 1; transform: translateY(0); }
 
 .shot {
+  position: relative;
+  z-index: 1;
   width: 100%;
   height: auto;
   max-height: none;
   border: 0;
-  border-radius: 10px;
+  border-radius: 11px;
   object-fit: contain;
   object-position: center;
-  box-shadow: none;
+  opacity: .92;
+  filter: saturate(.9) contrast(1.02) brightness(.96);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .08);
 }
 
 .project-visual > .terminal {
@@ -761,7 +800,7 @@ h2 {
   width: 330px;
   height: 330px;
   background: url("ai-code-emblem.png") center / contain no-repeat;
-  opacity: .07;
+  opacity: .12;
   pointer-events: none;
 }
 
@@ -813,7 +852,7 @@ footer {
 @media (max-width: 620px) {
   .wrap { width: min(100% - 28px, var(--max)); }
   nav { min-height: 66px; }
-  .brand-mark { width: 38px; height: 38px; flex-basis: 38px; }
+  .brand-mark { width: 42px; height: 42px; flex-basis: 42px; }
   .nav-links { gap: 7px; }
   .nav-links .button { min-height: 40px; padding: 0 13px; font-size: .8rem; }
   .hero { padding: 68px 0 62px; }
